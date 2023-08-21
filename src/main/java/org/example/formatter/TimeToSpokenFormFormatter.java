@@ -17,10 +17,15 @@ public class TimeToSpokenFormFormatter {
             return minutesAsSpokenWord + Preposition.TO + hourAsSpokenWord;
         }
 
+        if (isOneDigitMinutes(minutes)) {
+            return hourAsSpokenWord + Preposition.OH + minutesAsSpokenWord;
+        }
+
         return hourAsSpokenWord + Preposition.WHITESPACE + minutesAsSpokenWord;
     }
 
     private static boolean isColloquialForm(Integer minutes) {
         return minutes % 5 == 0 && minutes > 0;
     }
+    private static boolean isOneDigitMinutes(Integer minutes) { return minutes > 0 && minutes < 10; }
 }
